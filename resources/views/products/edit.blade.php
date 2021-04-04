@@ -2,7 +2,6 @@
 
 @section('container-fluid')
 
-
 <div class="container h-75 mb-4">
     <div class="row h-100">
         <div class="col-sm-4 p-0">
@@ -13,21 +12,19 @@
                 <h4 class="mt-5 pb-2"><strong>Registro de Producto</strong></h4>
             </span>
             <div class="p-4">
-                <form method="POST" action="{{route('productos.store')}}">
+                <form method="POST" action="{{route('productos.update', $product->id)}}">
                 	@csrf
+                    @method('PUT')
                     
-                    @if(session('mensaje'))
-                       <div class="alert alert-success">{{session('mensaje')}}</div>
-                    @endif
                     <div class="form-row align-items-center">
                         <div class="col-auto my-1">
                             <div class="form-group">
                                 <span>Supermercado:</span>
                             </div>
                           <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name ="supermercado">
-                            <option value ="" disabled selected>Seleccione Supermercado</option>
+                            <!-- <option value ="" disabled>Seleccione Supermercado</option> -->
                             @foreach($markets as $market)
-                            <option value="{{$market->id}}">{{$market->supermarket}}</option>
+                            <option value="{{$market->id}}" selected>{{$market->supermarket}}</option>
                             @endforeach
                           </select>
                           <div class="mb-3"> 
@@ -41,7 +38,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputProducto">Nombre del producto</label>
-                        <input type="text" name="producto" class="form-control" id="exampleInputProduct" aria-describedby="productoHelp" value="{{old('producto')}}">
+                        <input type="text" name="producto" class="form-control" id="exampleInputProduct" aria-describedby="productoHelp" value="{{old('producto', $product->producto)}}">
 
                         
                             @if ($errors->has('producto'))
@@ -53,7 +50,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Descripción</label>
-                        <input type="text" name="descripcion" class="form-control" id="exampleInputPassword1" value="{{old('descripcion')}}">
+                        <input type="text" name="descripcion" class="form-control" id="exampleInputPassword1" value="{{old('descripcion' ,$product->descripcion)}}">
 
                         @if ($errors->has('descripcion'))
                             <small class="form-text text-danger">
@@ -64,7 +61,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Precio</label>
-                        <input type="text" name="precio" class="form-control" id="exampleInputPassword1" value="{{old('precio')}}">
+                        <input type="text" name="precio" class="form-control" id="exampleInputPassword1" value="{{old('precio',$product->precio)}}">
 
                         @if ($errors->has('precio'))
                             <small class="form-text text-danger">
@@ -74,7 +71,7 @@
 
                     </div>
                     <div class="d-flex justify-content-center mt-5 pt-1"> 
-                        <button type="submit" class="btn btn-primary">Registre Producto</button>
+                        <button type="submit" class="btn btn-primary">Actualizar Producto</button>
                     </div>
                 </form>
             </div>

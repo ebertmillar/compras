@@ -13,6 +13,8 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
     <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
@@ -84,23 +86,23 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Productos:</h6>
                         <a class="collapse-item" href="{{url('productos/create')}}">Registrar Producto</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <a class="collapse-item" href="{{url('productos/')}}">Lista de productos</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCompras"
+                aria-expanded="true" aria-controls="collapseCompras">
                 <i class="fas fa-fw fa-wrench"></i>
-                <span>Utilities</span>
+                <span>Compras</span>
             </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+            <div id="collapseCompras" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
+                <h6 class="collapse-header">Compras:</h6>
+                <a class="collapse-item" href="utilities-color.html">Seleccionar Productos</a>
                 <a class="collapse-item" href="utilities-border.html">Borders</a>
                 <a class="collapse-item" href="utilities-animation.html">Animations</a>
                 <a class="collapse-item" href="utilities-other.html">Other</a>
@@ -185,10 +187,10 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form
+                <form action="{{route('productos.index')}}" method="GET" role="search"
                 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." name="producto" 
                     aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="button">
@@ -196,7 +198,7 @@
                         </button>
                     </div>
                 </div>
-            </form>
+                </form>
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -279,8 +281,8 @@
 <!-- Nav Item - Messages -->
 <li class="nav-item dropdown no-arrow mx-1">
     <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fas fa-envelope fa-fw"></i>
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi carrito
+    <i class="fas fa-shopping-cart"></i>
     <!-- Counter - Messages -->
     <span class="badge badge-danger badge-counter">7</span>
 </a>
@@ -348,7 +350,7 @@ aria-labelledby="messagesDropdown">
 <li class="nav-item dropdown no-arrow">
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+    <span class="mr-2 d-none d-lg-inline text-gray-600">{{ Auth::user()->name }}</span>
     <img class="img-profile rounded-circle"
     src="img/undraw_profile.svg">
 </a>

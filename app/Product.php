@@ -12,5 +12,13 @@ class Product extends Model
 		return $this->belongsTo('App\Supermarket','supermarket_id');
 	}
     
+    public function scopeProductName($query, $productName){
+
+        return $this->whereHas('market', function($query) use($productName){
+            $query->Where('supermarket','LIKE', "%$productName%")->orWhere('producto', 'LIKE', "%$productName%")->orderBy('id', 'desc');;  
+        });
+                        
+    }
+
     
 }
