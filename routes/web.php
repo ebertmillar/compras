@@ -17,10 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home','MainController@home');
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('compras/lista', 'ShoppingController@index');
 
 Route::resource('productos', 'ProductsController');
-
 Route::resource('supermercado', 'MarketsController');
+Route::resource('in_shopping_carts', 'InShoppingCartController', [ 
+	'only' => ['store','destroy']
+
+]);

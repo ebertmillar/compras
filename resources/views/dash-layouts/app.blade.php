@@ -102,7 +102,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Compras:</h6>
-                <a class="collapse-item" href="utilities-color.html">Seleccionar Productos</a>
+                <a class="collapse-item" href="{{url('compras/lista')}}">Seleccionar Productos</a>
                 <a class="collapse-item" href="utilities-border.html">Borders</a>
                 <a class="collapse-item" href="utilities-animation.html">Animations</a>
                 <a class="collapse-item" href="utilities-other.html">Other</a>
@@ -284,7 +284,7 @@
     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi carrito
     <i class="fas fa-shopping-cart"></i>
     <!-- Counter - Messages -->
-    <span class="badge badge-danger badge-counter">7</span>
+    <span class="badge badge-danger badge-counter">{{$shopping_cart->productsQuantity()}}</span>
 </a>
 <!-- Dropdown - Messages -->
 <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"

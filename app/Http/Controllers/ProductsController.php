@@ -66,8 +66,9 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        
+    {   
+        $product = Product::findOrFail($id);
+        return view('products.show', ['product' => $product]);
     }
 
     /**
