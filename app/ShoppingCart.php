@@ -9,8 +9,21 @@ class ShoppingCart extends Model
 {
 	protected $fillable = ['estado'];
 
+
+    public function inShoppingCart(){
+        return $this->hsMany('App\inShoppingCart');
+    }
+
+    public function products(){
+        return $this->belongsToMany('App\Product', 'in_shopping_carts');
+    }
+
+    public function total(){
+        return $this->products()->sum('precio');
+    }
+
     public function productsQuantity(){
-        return $this->id;
+        return $this->products()->count();
     }
 
 

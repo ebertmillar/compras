@@ -10,7 +10,7 @@
         <p>{{$product->precio}}</p>
         <p>{{$product->market->supermarket}}</p>
 
-        <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Agregar</a>
+        @include('in_shopping_carts.form', ['product' => $product])
       </div>
     </div>
 </div>

@@ -25,7 +25,7 @@
                     
 	    		<td><a href="{{route('productos.show',$product->id)}}" class="btn btn-outline-success">Ver</a></td>
 	    		<td>
-	    			
+	    			@include('in_shopping_carts.form', ['product' => $product])
 				</td>
 	    	</tr>
 	    	@endforeach

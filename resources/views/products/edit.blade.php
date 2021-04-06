@@ -1,4 +1,4 @@
-@extends('dash-layouts.app')
+@extends(dash-layouts.app')
 
 @section('container-fluid')
 

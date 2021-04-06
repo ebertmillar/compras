@@ -31,3 +31,5 @@ Route::resource('in_shopping_carts', 'InShoppingCartController', [
 	'only' => ['store','destroy']
 
 ]);
+
+route::resource('cart', 'ShoppingCartsController');

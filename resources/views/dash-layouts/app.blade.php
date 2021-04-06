@@ -284,7 +284,7 @@
     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mi carrito
     <i class="fas fa-shopping-cart"></i>
     <!-- Counter - Messages -->
-    <span class="badge badge-danger badge-counter">{{$shopping_cart->productsQuantity()}}</span>
+    <span class="badge badge-danger badge-counter">{{$productsQuantity}}</span>
 </a>
 <!-- Dropdown - Messages -->
 <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -340,7 +340,7 @@ aria-labelledby="messagesDropdown">
         <div class="small text-gray-500">Chicken the Dog · 2w</div>
     </div>
 </a>
-<a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+<a class="dropdown-item text-center small text-gray-500" href="{{url('cart')}}">Read More Messages</a>
 </div>
 </li>
 
