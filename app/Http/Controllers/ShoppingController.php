@@ -13,7 +13,6 @@ class ShoppingController extends Controller
 
         $products = Product::productName($productName)->get();
 
-
         return view('compras.index', ['products' => $products]);
     }
 }

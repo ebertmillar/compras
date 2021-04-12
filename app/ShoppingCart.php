@@ -10,12 +10,30 @@ class ShoppingCart extends Model
 	protected $fillable = ['estado'];
 
 
+    public function approve(){
+        $this->updateCustomID();
+    }
+
+    public function generateCustomID(){
+        return md5("$this->id $this->updated_at");
+    }
+
+    public function updateCustomID(){
+        $this->estado = 'aprobado';
+        $this->customid = $this->generateCustomID();
+        $this->save();
+    }
+
     public function inShoppingCart(){
-        return $this->hsMany('App\inShoppingCart');
+        return $this->hasMany('App\inShoppingCart');
     }
 
     public function products(){
         return $this->belongsToMany('App\Product', 'in_shopping_carts');
+    }
+
+    public function order(){
+        return $this->hasOne('App\Order')->first();
     }
 
     public function total(){

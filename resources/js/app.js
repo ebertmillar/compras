@@ -1,5 +1,6 @@
 require('./bootstrap');
 
+
 (function($) {
   "use strict"; // Start of use strict
 

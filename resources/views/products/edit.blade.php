@@ -1,4 +1,8 @@
-@extends(dash-layouts.app')
+@extends('dash-layouts.app')
+
+@section('buscador')
+    @include('search.search-admin')
+@endsection
 
 @section('container-fluid')
 

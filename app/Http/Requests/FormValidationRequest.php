@@ -24,10 +24,11 @@ class FormValidationRequest extends FormRequest
     public function rules()
     {
         return [
-            'producto' => 'required|regex:/^[\pL\s\-]+$/u',
-            'descripcion' =>'alpha_num',
+            'producto' => 'required',
+            // 'descripcion' =>'alpha_num',
             'precio' => 'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
-            'supermercado' => 'required',     
+            'supermercado' => 'required', 
+            'descripcion' => 'nullable',   
         ];
     }
 
@@ -38,7 +39,7 @@ class FormValidationRequest extends FormRequest
             'producto.required'   => 'El campo :attribute es obligatorio.',
             'producto.regex:/^[\pL\s\-]+$/u' => 'El nombre del :attribute debe contener texto.',
 
-            'descripcion.regex:/^[\pL\s\-]+$/u' => 'El :attribute debe contener texto.',
+            // 'descripcion.regex:/^[\pL\s\-]+$/u' => 'El :attribute debe contener texto.',
      
             'precio.required'   => 'Debe colocar :attribute es obligatorio.',
             'precio.numeric'   => 'El :attribute debe tener solo numeros.',

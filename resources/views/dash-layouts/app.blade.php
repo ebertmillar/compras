@@ -103,7 +103,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Compras:</h6>
                 <a class="collapse-item" href="{{url('compras/lista')}}">Seleccionar Productos</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
+                <a class="collapse-item" href="{{url('orders')}}">Gatos del Mes</a>
                 <a class="collapse-item" href="utilities-animation.html">Animations</a>
                 <a class="collapse-item" href="utilities-other.html">Other</a>
             </div>
@@ -187,18 +187,7 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form action="{{route('productos.index')}}" method="GET" role="search"
-                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." name="producto" 
-                    aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                            <i class="fas fa-search fa-sm"></i>
-                        </button>
-                    </div>
-                </div>
-                </form>
+                @yield('buscador')
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -432,6 +421,9 @@ aria-hidden="true">
 </div>
 </div>
 
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/submit.js')}}"></script>
+
 <!-- Bootstrap core JavaScript-->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -441,7 +433,6 @@ aria-hidden="true">
 
 <!-- Custom scripts for all pages-->
 <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
-<script src="{{asset('js/app.js')}}"></script>
 
 <!-- Page level plugins -->
 <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>

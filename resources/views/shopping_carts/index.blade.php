@@ -21,7 +21,7 @@
            @forelse($products as $product)
            <tr>
              <td> {{ $product->producto }}</td>
-             <td> {{ $product->precio }} €</td>
+             <td> {{ number_format($product->precio,2) }} €</td>
            	 <td>{{$product->market->supermarket}}</td>
            </tr>
            @empty
@@ -35,20 +35,34 @@
 
            @endforelse
            <tr class="bg-white text-dark bordered-0">
-           	<td colspan="2" class="text-left">
+           	<td colspan="1" class="text-center">
            		<h6 class="p-0 m-0"><span class=" pl-2 m-1">
-           			Total
+           			TOTAL
 	           	</span></h6>
-	       </td>
+  	       </td>
            		
 
-           	<td>{{$total}} €</td>
+           	<td>{{number_format($total,2)}} €</td>
            </tr>
         </tbody>  
       </table>
+      @if($total > 0)
       <div class="text-right">
+        @include('shopping_carts.form')
       </div>
+      @endif
     </div>
   </div>
+</div>
+@endsection
 
+@section('scripts')
+ <script type="text/javascript">
+   (function(){
+
+     $.('.form-prevent-multiple-submits').on('submit', function(){
+        $.('.button-prevent-multiple-submits').atrr('disabled', 'true');
+     });
+   })();
+ </script>
 @endsection

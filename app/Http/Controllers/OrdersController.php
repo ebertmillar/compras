@@ -6,7 +6,7 @@ use App\Order;
 use App\ShoppingCart;
 use Illuminate\Http\Request;
 
-class ShoppingCartsController extends Controller
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,17 +15,21 @@ class ShoppingCartsController extends Controller
      */
     public function index()
     {
-        $shopping_cart_id = \Session::get('shopping_cart_id');
+        $orders = Order::latest()->get();
 
-        $shopping_cart = ShoppingCart::findOrCreateBySessionId($shopping_cart_id);
+        // dd($orders->id);
+        
+        // $details = DB::table('shopping_carts')
+        // ->join('orders', 'shopping_carts.id' ,'=', 'orders.shopping_cart_id')
+        // ->select('shopping_carts.customid')
 
-        $products = $shopping_cart->products()->get();
-
-        $total = $shopping_cart->total();
-
-        return view('shopping_carts.index', [
-            'products' => $products,
-            'total' => $total ]);
+        $totalMonth = Order::totalMonth();
+        $totalMonthCount = Order::totalMonthCount();
+        return view('orders.index', [
+            'orders' => $orders, 
+            'totalMonth' =>$totalMonth,
+            'totalMonthCount' => $totalMonthCount
+        ]);
     }
 
     /**
@@ -33,9 +37,9 @@ class ShoppingCartsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function pagar(Request $request)
+    public function create()
     {
-    
+        //
     }
 
     /**
@@ -46,24 +50,7 @@ class ShoppingCartsController extends Controller
      */
     public function store(Request $request)
     {
-        $shopping_cart_id = \Session::get('shopping_cart_id');
-
-        $shopping_cart = ShoppingCart::findOrCreateBySessionId($shopping_cart_id);
-
-        $products = $shopping_cart->products()->get();
-
-        if($shopping_cart->productsQuantity()){
-            
-            $shopping_cart->approve();
-            \Session::remove('shopping_cart_id');
-            $order = Order::createFromCartResponse($shopping_cart);
-            
-            return redirect(url('compras/'.$shopping_cart->customid));
-        }else{
-            return redirect(url('compras/'.$shopping_cart->customid));
-        }
-
-
+        //
     }
 
     /**
@@ -74,16 +61,7 @@ class ShoppingCartsController extends Controller
      */
     public function show($id)
     {
-        $shopping_cart = ShoppingCart::where('customid', $id)->first();
-        $order = $shopping_cart->order();
-        $products = $shopping_cart->products()->get();
-
-
-        return view("shopping_carts.completed", [
-            'shopping_cart' => $shopping_cart,
-            'order' => $order,
-            'products' =>$products
-            ]);
+        //
     }
 
     /**

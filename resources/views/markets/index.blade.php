@@ -1,5 +1,9 @@
 @extends('dash-layouts.app')
 
+@section('buscador')
+	@include('search.search-buy')
+@endsection
+
 @section('container-fluid')
 <div class="container h-75">
 	<div class="table-responsive-sm ">

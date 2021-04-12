@@ -32,4 +32,13 @@ Route::resource('in_shopping_carts', 'InShoppingCartController', [
 
 ]);
 
+Route::resource('compras', 'ShoppingCartsController', [ 
+	'only' => ['show']
+]);
+
+Route::resource('orders', 'OrdersController', [ 
+	'only' => ['index','update']
+]);
+
 route::resource('cart', 'ShoppingCartsController');
+// Route::post('cart', 'ShoppingCartsController@pagar');

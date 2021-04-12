@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->integer('supermarket_id')->unsigned();
             $table->string('producto');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->float('precio',4,2);
             $table->foreign('supermarket_id')->references('id')->on('supermarkets');
 
