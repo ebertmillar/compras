@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\InShoppingCart;
 use App\Order;
 use App\ShoppingCart;
 use Illuminate\Http\Request;
@@ -19,12 +20,14 @@ class ShoppingCartsController extends Controller
 
         $shopping_cart = ShoppingCart::findOrCreateBySessionId($shopping_cart_id);
 
-        $products = $shopping_cart->products()->get();
+        $carrito = InShoppingCart::where('shopping_cart_id', '=' ,"$shopping_cart->id")->get();
+
+        // $carrito = $carrto->products()->get();
 
         $total = $shopping_cart->total();
 
         return view('shopping_carts.index', [
-            'products' => $products,
+            'carrito' => $carrito,
             'total' => $total ]);
     }
 

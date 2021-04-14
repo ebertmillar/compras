@@ -11,6 +11,12 @@
    <div class="table-responsive ">
      <table class="table table-bordered">
        <thead class="bg-gradient-primary text-white">
+         <!-- <tr>
+           <th>Producto</th>
+           <th>Precio</th>
+           <th>Supermercado</th>
+           <th>id pivot</th>
+         </tr> -->
          <tr>
            <th>Producto</th>
            <th>Precio</th>
@@ -18,11 +24,12 @@
          </tr>
        </thead>
        <tbody class="bg-white">
-           @forelse($products as $product)
+           @forelse($carrito as $product)
            <tr>
-             <td> {{ $product->producto }}</td>
-             <td> {{ number_format($product->precio,2) }} €</td>
-           	 <td>{{$product->market->supermarket}}</td>
+             <td>{{ $product->productsList->producto}}</td>
+             <td>{{ number_format($product->productsList->precio,2)}} €</td>
+             <td>{{ $product->productsList->market->supermarket}}</td>
+             <td>@include('shopping_carts.delete')</td>
            </tr>
            @empty
             <tr>
@@ -35,14 +42,12 @@
 
            @endforelse
            <tr class="bg-white text-dark bordered-0">
-           	<td colspan="1" class="text-center">
-           		<h6 class="p-0 m-0"><span class=" pl-2 m-1">
+           	<td colspan="1" class="text-center bg-primary">
+           		<h6 class="p-0 m-0"><span class=" pl-2 m-1 text-white">
            			TOTAL
 	           	</span></h6>
   	       </td>
-           		
-
-           	<td>{{number_format($total,2)}} €</td>
+           	<td class="bg-primary text-white"><strong> {{number_format($total,2)}} € </strong></td>
            </tr>
         </tbody>  
       </table>

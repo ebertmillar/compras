@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\InShoppingCart;
+use App\Product;
 use App\ShoppingCart;
 use Illuminate\Http\Request;
 
@@ -97,6 +98,14 @@ class InShoppingCartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $shopping_cart_id = \Session::get('shopping_cart_id');
+
+        $shopping_cart = ShoppingCart::findOrCreateBySessionId($shopping_cart_id);
+        
+        $carrito = InShoppingCart::findOrFail($id);
+        $carrito->delete();
+
+        // dd(InShoppingCart::select('id')->where('shopping_cart_id','=',"$shopping_cart->id" and 'product_id','=','$id'));
+        return back();
     }
 }
